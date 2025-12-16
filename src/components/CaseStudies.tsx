@@ -1,107 +1,94 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+"use client";
+
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Clock, TrendingUp, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, BarChart3, Users, Zap } from "lucide-react";
+import Link from "next/link"; // <--- Importante para navegar
+
+const cases = [
+  {
+    title: "Inmobiliaria Automática",
+    metric: "+30% Ventas",
+    description: "Cualificación de leads 24/7 y agendamiento de visitas sin intervención humana.",
+    tags: ["Real Estate", "WhatsApp Bot", "Make"],
+    icon: <Users className="text-blue-500" />,
+    link: "/casos/inmobiliaria" // <--- ENLACE CONECTADO
+  },
+  {
+    title: "Soporte E-commerce",
+    metric: "-80% Tickets",
+    description: "IA entrenada con políticas de la empresa para resolver dudas de envíos y devoluciones.",
+    tags: ["E-commerce", "Soporte IA", "Shopify"],
+    icon: <Zap className="text-amber-500" />,
+    link: "/casos/ecommerce" // <--- ENLACE CONECTADO
+  },
+  {
+    title: "Automatización Financiera",
+    metric: "40h Ahorradas",
+    description: "Extracción de facturas, conciliación bancaria y reportes en Excel automáticos.",
+    tags: ["Finanzas", "Procesamiento Docs", "GPT-4"],
+    icon: <BarChart3 className="text-green-500" />,
+    link: "/contacto" // Si no tenemos caso detallado, llevamos a contacto
+  }
+];
 
 export default function CaseStudies() {
-  const cases = [
-    {
-      sector: "Inmobiliaria",
-      title: "Calificación Automática de Leads",
-      problem: "El equipo de ventas perdía 4 horas al día respondiendo preguntas básicas en WhatsApp y filtrando curiosos.",
-      solution: "Implementamos un Agente de Voiceflow conectado a CRM que califica al prospecto, verifica presupuesto y agenda la visita solo si es cualificado.",
-      stats: [
-        { label: "Citas Agendadas", value: "+45%", icon: TrendingUp },
-        { label: "Tiempo de Respuesta", value: "Instantáneo", icon: Clock },
-      ],
-      stack: ["Voiceflow", "WhatsApp API", "HubSpot"],
-    },
-    {
-      sector: "E-commerce",
-      title: "Soporte al Cliente & Devoluciones",
-      problem: "Saturación en soporte técnico por preguntas repetitivas sobre 'dónde está mi pedido' y procesos de devolución.",
-      solution: "Chatbot con IA entrenado con la base de conocimiento de la empresa. Resuelve dudas y procesa devoluciones automáticamente consultando la base de datos.",
-      stats: [
-        { label: "Tickets Reducidos", value: "-70%", icon: ArrowUpRight },
-        { label: "Satisfacción (CSAT)", value: "4.8/5", icon: Users },
-      ],
-      stack: ["OpenAI", "Shopify", "Zendesk"],
-    },
-    {
-      sector: "Agencia de Marketing",
-      title: "Automatización de Reportes",
-      problem: "Los Account Managers dedicaban los viernes enteros a descargar métricas de Facebook/Google Ads para hacer reportes en Excel.",
-      solution: "Sistema en Make.com que extrae la data cada lunes, genera un PDF con análisis de IA y lo envía al cliente automáticamente.",
-      stats: [
-        { label: "Horas Ahorradas", value: "20h/semana", icon: Clock },
-        { label: "Errores Humanos", value: "0%", icon: TrendingUp },
-      ],
-      stack: ["Make", "Google Sheets", "Slack"],
-    },
-  ];
-
   return (
-    <section className="py-24 bg-neutral-900 text-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4">
-            Resultados Reales, No Teóricos
+    <section className="py-24 bg-slate-50">
+      <div className="container px-4 mx-auto">
+        
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4 border-blue-200 bg-blue-50 text-blue-700">
+            Resultados Comprobados
+          </Badge>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            No prometemos, <span className="text-blue-600">demostramos</span>.
           </h2>
-          <p className="text-neutral-400 text-lg">
-            Así es como transformamos empresas utilizando automatización inteligente.
-            Métricas validadas en entornos de producción.
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+            Empresas reales. Problemas reales. Soluciones de IA que se pagan solas en el primer mes.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cases.map((item, index) => (
-            <Card key={index} className="bg-neutral-950 border-neutral-800 flex flex-col hover:border-neutral-600 transition-all duration-300">
-              <CardHeader>
-                <div className="mb-4">
-                  <Badge variant="outline" className="text-green-400 border-green-400/30 bg-green-400/10">
-                    {item.sector}
-                  </Badge>
-                </div>
-                <CardTitle className="text-xl text-white mb-2">
-                  {item.title}
-                </CardTitle>
-                <CardDescription className="text-neutral-400 line-clamp-3">
-                  {item.problem}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="mt-auto space-y-6">
-                {/* Métricas destacadas */}
-                <div className="grid grid-cols-2 gap-4 py-4 border-t border-b border-neutral-800">
-                  {item.stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                      <div className="text-2xl font-bold text-white flex justify-center items-center gap-2">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
-                        {stat.label}
-                      </div>
-                    </div>
-                  ))}
+          {cases.map((caseStudy, index) => (
+            <Card key={index} className="p-8 border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group bg-white flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-3 bg-slate-100 rounded-xl group-hover:bg-blue-50 transition-colors">
+                    {caseStudy.icon}
+                  </div>
+                  <span className="font-bold text-2xl text-slate-900 bg-slate-50 px-3 py-1 rounded-lg border border-slate-100">
+                    {caseStudy.metric}
+                  </span>
                 </div>
 
-                {/* Stack Tecnológico */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {item.stack.map((tech, i) => (
-                    <span key={i} className="text-xs font-mono text-neutral-500 bg-neutral-900 px-2 py-1 rounded border border-neutral-800">
-                      {tech}
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {caseStudy.title}
+                </h3>
+                
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                  {caseStudy.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {caseStudy.tags.map((tag) => (
+                    <span key={tag} className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
+                      {tag}
                     </span>
                   ))}
                 </div>
-              </CardContent>
+              </div>
+
+              <Link href={caseStudy.link} className="block mt-auto">
+                <Button variant="outline" className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all justify-between">
+                  Ver Caso de Estudio <ArrowRight size={16} />
+                </Button>
+              </Link>
             </Card>
           ))}
         </div>
+
       </div>
     </section>
   );

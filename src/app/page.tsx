@@ -1,58 +1,87 @@
+"use client";
+
+import Link from "next/link"; 
+import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
 import Services from "@/components/Services";
 import FAQ from "@/components/FAQ";
 import TechStack from "@/components/TechStack";
-import ChatWidget from "@/components/ChatWidget";
-import CaseStudies from "@/components/CaseStudies"; // <--- Nuevo Import
+import CaseStudies from "@/components/CaseStudies"; 
+import CTA from "@/components/CTA";
+import Process from "@/components/Process"; 
+import ROICalculator from "@/components/ROICalculator"; 
+import LeadMagnet from "@/components/LeadMagnet"; 
+
+// --- CARGA SEGURA ---
+const Comparison = dynamic(() => import("@/components/Comparison"), {
+  loading: () => <div className="h-96 w-full flex items-center justify-center text-neutral-400">Cargando análisis...</div>,
+  ssr: false, 
+});
+
+const LiveStats = dynamic(() => import("@/components/LiveStats"), {
+  loading: () => <div className="h-32 w-full flex items-center justify-center text-neutral-400">Cargando métricas...</div>,
+  ssr: false, 
+});
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white selection:bg-neutral-800">
+    <main className="min-h-screen bg-white text-neutral-900 selection:bg-blue-100">
       
-      {/* WIDGET DEL CHATBOT */}
-      <ChatWidget />
-
       {/* SECCIÓN HERO (PORTADA) */}
-      <section className="flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center">
-        <div className="space-y-8 max-w-4xl mx-auto">
-          
-          <div className="inline-flex items-center rounded-full border border-neutral-800 bg-neutral-900 px-3 py-1 text-sm text-neutral-400">
-            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-            Sistema Operativo: Online
+      <section className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center overflow-hidden">
+        
+        <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(to_bottom,white,transparent)] -z-10" />
+
+        <div className="space-y-8 max-w-5xl mx-auto z-10">
+          <div className="animate-in inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm text-blue-700 shadow-sm">
+            <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
+            Agencia Certificada 2025
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tighter sm:text-7xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent pb-2">
-            Agencia IA
+          <h1 className="animate-in delay-100 text-4xl font-extrabold tracking-tighter sm:text-7xl pb-2 text-slate-900">
+            Tu empresa, pero <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+              en piloto automático.
+            </span>
           </h1>
           
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            No vendemos "prompts". Implementamos infraestructuras de 
-            Inteligencia Artificial que automatizan tus ventas, soporte y operaciones.
-            <span className="block mt-2 text-white font-medium">Resultados medibles en 30 días.</span>
+          <p className="animate-in delay-200 text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+            Implementamos infraestructuras de Inteligencia Artificial que trabajan mientras duermes.
+            <span className="block mt-2 text-neutral-900 font-medium">Recupera 20+ horas semanales de tu equipo.</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-white text-black hover:bg-neutral-200 font-medium h-12 px-8">
-              Solicitar Auditoría Técnica
-            </Button>
-            <Button size="lg" variant="outline" className="border-neutral-800 text-white hover:bg-neutral-900 h-12 px-8">
-              Ver Demo en Vivo
-            </Button>
+          <div className="animate-in delay-300 flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Link href="/contacto">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 transition-opacity font-bold h-12 px-8 shadow-lg shadow-blue-500/20 border-0 w-full sm:w-auto">
+                Solicitar Auditoría Técnica
+              </Button>
+            </Link>
+            
+            <Link href="/#servicios">
+              <Button size="lg" variant="outline" className="border-neutral-200 text-neutral-900 hover:bg-neutral-50 h-12 px-8 w-full sm:w-auto">
+                Ver Soluciones
+              </Button>
+            </Link>
           </div>
 
-          <TechStack />
-          
+          <div className="min-h-[100px] w-full pt-8">
+             <LiveStats />
+          </div>
+
+          <div className="animate-in delay-300 pt-8">
+             <TechStack />
+          </div>
         </div>
       </section>
 
-      {/* SECCIÓN DE SERVICIOS */}
-      <Services />
-
-      {/* SECCIÓN DE CASOS DE ÉXITO (NUEVO) */}
-      <CaseStudies />
-
-      {/* SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) */}
-      <FAQ />
+      <div id="servicios"> <Services /> </div>
+      <ROICalculator />
+      <Process />
+      <div id="casos"> <CaseStudies /> </div>
+      <div className="min-h-[400px] w-full"> <Comparison /> </div>
+      <LeadMagnet />
+      <CTA /> 
+      <div id="faq"> <FAQ /> </div>
       
     </main>
   );

@@ -1,54 +1,55 @@
-import {  Github, Twitter, Linkedin } from "lucide-react";
+import Link from "next/link";
+import { Zap, Github, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-800 bg-neutral-950 text-neutral-400 py-12">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        {/* Columna 1: Marca */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white tracking-tighter">Agencia IA</h3>
-          <p className="text-sm leading-relaxed">
-            Automatizando el futuro de los negocios con inteligencia artificial ética y eficiente.
-          </p>
-        </div>
+    <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          
+          {/* IDENTIDAD DE MARCA */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 font-bold text-xl text-slate-900">
+              <div className="p-1 bg-blue-600 rounded text-white">
+                <Zap size={20} fill="currentColor" />
+              </div>
+              <span>Nexus AI</span>
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Ayudamos a empresas a escalar sus operaciones mediante Inteligencia Artificial y automatización estratégica.
+            </p>
+          </div>
 
-        {/* Columna 2: Enlaces Rápidos */}
-        <div className="space-y-4">
-          <h4 className="text-white font-medium">Empresa</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">Sobre Nosotros</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Servicios</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Casos de Éxito</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
-          </ul>
-        </div>
+          <div>
+            <h4 className="font-bold text-slate-900 mb-4">Empresa</h4>
+            <ul className="space-y-2 text-sm text-slate-600">
+              <li><Link href="/nosotros" className="hover:text-blue-600">Sobre Nosotros</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
+              <li><Link href="/contacto" className="hover:text-blue-600">Contacto</Link></li>
+            </ul>
+          </div>
 
-        {/* Columna 3: Legal */}
-        <div className="space-y-4">
-          <h4 className="text-white font-medium">Legal</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">Privacidad</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Términos</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Cookies</a></li>
-          </ul>
-        </div>
+          <div>
+            <h4 className="font-bold text-slate-900 mb-4">Legal</h4>
+            <ul className="space-y-2 text-sm text-slate-600">
+              <li><Link href="#" className="hover:text-blue-600">Privacidad</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Términos</Link></li>
+            </ul>
+          </div>
 
-        {/* Columna 4: Social */}
-        <div className="space-y-4">
-          <h4 className="text-white font-medium">Síguenos</h4>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
-            <a href="#" className="hover:text-white transition-colors"><Github size={20} /></a>
+          <div>
+            <h4 className="font-bold text-slate-900 mb-4">Síguenos</h4>
+            <div className="flex gap-4">
+              <Link href="#" className="text-slate-400 hover:text-blue-600"><Twitter size={20} /></Link>
+              <Link href="#" className="text-slate-400 hover:text-blue-700"><Linkedin size={20} /></Link>
+              <Link href="#" className="text-slate-400 hover:text-slate-900"><Github size={20} /></Link>
+            </div>
           </div>
         </div>
-        
-      </div>
-      
-      {/* Copyright */}
-      <div className="container mx-auto px-4 mt-12 pt-8 border-t border-neutral-900 text-center text-sm text-neutral-600">
-        © {new Date().getFullYear()} Agencia IA. Todos los derechos reservados.
+
+        <div className="border-t border-slate-200 pt-8 text-center text-sm text-slate-400">
+          © {new Date().getFullYear()} Nexus AI. Todos los derechos reservados.
+        </div>
       </div>
     </footer>
   );
