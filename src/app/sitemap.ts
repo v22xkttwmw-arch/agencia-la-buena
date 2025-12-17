@@ -1,32 +1,38 @@
-import { MetadataRoute } from 'next';
-
+import { MetadataRoute } from 'next'
+ 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://agenciaia.ai'; // Tu dominio (cámbialo cuando tengas el real)
+  const baseUrl = 'https://sparkops.ai' // CAMBIA ESTO CUANDO TENGAS EL DOMINIO REAL
 
   return [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1, // La portada es lo más importante (1.0)
+      changeFrequency: 'weekly',
+      priority: 1,
     },
     {
-      url: `${baseUrl}/#servicios`,
+      url: `${baseUrl}/servicios`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#casos`,
+      url: `${baseUrl}/nosotros`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#faq`,
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contacto`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-  ];
+  ]
 }

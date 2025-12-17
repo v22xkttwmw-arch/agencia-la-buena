@@ -1,12 +1,14 @@
-import { MetadataRoute } from 'next';
-
+import { MetadataRoute } from 'next'
+ 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://sparkops.ai' // CAMBIA ESTO CUANDO TENGAS EL DOMINIO REAL
+
   return {
     rules: {
-      userAgent: '*', // Permitir a todos los robots (Google, Bing, etc.)
-      allow: '/',     // Permitir leer toda la web
-      disallow: '/private/', // (Opcional) Bloquear carpetas privadas si tuvieras
+      userAgent: '*',
+      allow: '/',
+      disallow: '/privado/',
     },
-    sitemap: 'https://agenciaia.ai/sitemap.xml', // Cambiaremos esto por tu dominio real luego
-  };
+    sitemap: `${baseUrl}/sitemap.xml`,
+  }
 }
