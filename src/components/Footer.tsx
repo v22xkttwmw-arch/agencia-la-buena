@@ -7,19 +7,20 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
-          {/* IDENTIDAD DE MARCA */}
+          {/* 1. IDENTIDAD SPARKOPS */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold text-xl text-slate-900">
-              <div className="p-1 bg-blue-600 rounded text-white">
-                <Zap size={20} fill="currentColor" />
+              <div className="p-1 bg-blue-600 rounded text-white leading-none">
+                <Zap size={20} fill="currentColor" strokeWidth={2.5} />
               </div>
-              <span>Nexus AI</span>
+              <span className="tracking-tight">SparkOps</span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Ayudamos a empresas a escalar sus operaciones mediante Inteligencia Artificial y automatización estratégica.
+              Inyectamos velocidad e inteligencia en tus operaciones B2B mediante automatización avanzada.
             </p>
           </div>
 
+          {/* 2. ENLACES EMPRESA */}
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm text-slate-600">
@@ -29,6 +30,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* 3. LEGAL */}
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-slate-600">
@@ -37,6 +39,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* 4. REDES SOCIALES */}
           <div>
             <h4 className="font-bold text-slate-900 mb-4">Síguenos</h4>
             <div className="flex gap-4">
@@ -48,7 +51,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-200 pt-8 text-center text-sm text-slate-400">
-          © {new Date().getFullYear()} Nexus AI. Todos los derechos reservados.
+          © {new Date().getFullYear()} SparkOps. Todos los derechos reservados.
         </div>
       </div>
     </footer>

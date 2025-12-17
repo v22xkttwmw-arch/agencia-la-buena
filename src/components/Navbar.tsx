@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Zap } from "lucide-react"; // Mantenemos el icono Zap (Rayo)
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
@@ -14,12 +14,14 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           
-          {/* LOGO NEXUS AI */}
+          {/* LOGO SPARKOPS */}
           <Link href="/" onClick={closeMenu} className="flex items-center gap-2 font-bold text-xl text-slate-900">
-            <div className="p-1 bg-blue-600 rounded text-white shadow-lg shadow-blue-500/30">
-              <Zap size={20} fill="currentColor" />
+            {/* El contenedor azul del rayo */}
+            <div className="p-1 bg-blue-600 rounded text-white shadow-lg shadow-blue-500/30 leading-none">
+              <Zap size={20} fill="currentColor" strokeWidth={2.5} />
             </div>
-            <span>Nexus AI</span>
+            {/* El nombre */}
+            <span className="tracking-tight">SparkOps</span>
           </Link>
 
           {/* MENÚ DE ESCRITORIO */}
@@ -38,6 +40,7 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* BOTÓN MÓVIL */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -46,7 +49,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MENÚ MÓVIL */}
+      {/* MENÚ MÓVIL DESPLEGABLE */}
       {isOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white absolute w-full px-4 py-6 space-y-4 shadow-xl h-screen">
           <Link href="/#servicios" onClick={closeMenu} className="block text-lg font-medium text-slate-600 hover:text-blue-600 py-2">Servicios</Link>

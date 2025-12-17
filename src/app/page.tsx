@@ -12,7 +12,7 @@ import Process from "@/components/Process";
 import ROICalculator from "@/components/ROICalculator"; 
 import LeadMagnet from "@/components/LeadMagnet"; 
 
-// --- CARGA SEGURA ---
+// --- CARGA DIFERIDA (Para que la web vuele) ---
 const Comparison = dynamic(() => import("@/components/Comparison"), {
   loading: () => <div className="h-96 w-full flex items-center justify-center text-neutral-400">Cargando análisis...</div>,
   ssr: false, 
@@ -27,9 +27,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-neutral-900 selection:bg-blue-100">
       
-      {/* SECCIÓN HERO (PORTADA) */}
+      {/* 1. SECCIÓN HERO (PORTADA) */}
       <section className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center overflow-hidden">
         
+        {/* Fondo de cuadrícula sutil */}
         <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(to_bottom,white,transparent)] -z-10" />
 
         <div className="space-y-8 max-w-5xl mx-auto z-10">
@@ -74,15 +75,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 2. SERVICIOS */}
       <div id="servicios"> <Services /> </div>
+
+      {/* 3. CALCULADORA ROI */}
       <ROICalculator />
+
+      {/* 4. PROCESO */}
       <Process />
+
+      {/* 5. CASOS DE ÉXITO */}
       <div id="casos"> <CaseStudies /> </div>
+
+      {/* 6. COMPARACIÓN (TABLA DARK MODE) */}
       <div className="min-h-[400px] w-full"> <Comparison /> </div>
+
+      {/* 7. LEAD MAGNET (EBOOK/GUÍA) */}
       <LeadMagnet />
+
+      {/* 8. CTA FINAL */}
       <CTA /> 
+      
+      {/* 9. FAQ (PREGUNTAS FRECUENTES) */}
       <div id="faq"> <FAQ /> </div>
       
+      {/* 🛑 AQUÍ TERMINA LA PÁGINA. 
+          Al no haber nada más debajo de FAQ, 
+          esa barra de "Agencia IA" desaparecerá y 
+          saldrá directamente el Footer de SparkOps. 
+      */}
+
     </main>
   );
 }
