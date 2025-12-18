@@ -1,82 +1,69 @@
-"use client";
-
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Bot, Workflow, Database, ArrowRight, BrainCircuit, LineChart } from "lucide-react";
+import { Cpu, BarChart3, Globe, Zap, Bot, ShieldCheck } from "lucide-react";
 
 const services = [
   {
-    icon: <Bot className="w-10 h-10 text-blue-600" />,
-    title: "Agentes de IA Autónomos",
-    description: "No son simples chatbots. Son empleados digitales capaces de resolver tickets complejos, gestionar devoluciones y agendar citas en tu CRM sin supervisión humana.",
-    tags: ["Soporte 24/7", "Ventas Inbound", "Multi-idioma"]
+    icon: <Bot className="w-8 h-8 text-blue-500" />,
+    title: "Agentes IA Autónomos",
+    description: "Bots que trabajan 24/7. Atienden clientes, agendan citas y cualifican leads mientras duermes."
   },
   {
-    icon: <Workflow className="w-10 h-10 text-violet-600" />,
-    title: "Orquestación de Flujos (RPA)",
-    description: "Conectamos tu ecosistema (Salesforce, SAP, Slack). Cuando entra una factura, nuestro sistema la lee, la valida y la paga. Sin clics humanos.",
-    tags: ["Make / Zapier Enterprise", "Automatización Financiera"]
+    icon: <Cpu className="w-8 h-8 text-purple-500" />,
+    title: "Automatización (RPA)",
+    description: "Adiós a las tareas repetitivas. Conectamos tus apps para que los datos fluyan solos sin errores humanos."
   },
   {
-    icon: <Database className="w-10 h-10 text-emerald-600" />,
-    title: "Reactividad de Datos (ETL)",
-    description: "Tu empresa genera datos que nadie mira. Creamos dashboards que te avisan por WhatsApp si las ventas bajan o si hay una anomalía en logística.",
-    tags: ["Business Intelligence", "Alertas en Tiempo Real"]
+    icon: <BarChart3 className="w-8 h-8 text-green-500" />,
+    title: "Dashboards Inteligentes",
+    description: "Visualiza tus métricas en tiempo real. Toma decisiones basadas en datos, no en intuición."
   },
+  {
+    icon: <Globe className="w-8 h-8 text-indigo-500" />,
+    title: "Webs de Alta Conversión",
+    description: "Diseño minimalista y persuasivo enfocado en una sola cosa: convertir visitantes en clientes."
+  },
+  {
+    icon: <Zap className="w-8 h-8 text-yellow-500" />,
+    title: "Consultoría de Procesos",
+    description: "Auditamos tu flujo de trabajo para detectar cuellos de botella y eliminar ineficiencias."
+  },
+  {
+    icon: <ShieldCheck className="w-8 h-8 text-red-500" />,
+    title: "Seguridad de Datos",
+    description: "Implementamos IA cumpliendo normativas GDPR y protegiendo la información sensible de tu empresa."
+  }
 ];
 
 export default function Services() {
   return (
-    <section className="py-24 bg-slate-50 relative overflow-hidden">
-      <div className="container px-4 mx-auto relative z-10">
+    <section id="servicios" className="py-16 bg-white">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         
-        {/* CABECERA */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <Badge variant="outline" className="mb-4 border-blue-200 text-blue-700 bg-blue-50">
-            Arquitectura de Soluciones
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Más allá del "Chatbot". <br />
-            <span className="text-blue-600">Ingeniería de Procesos.</span>
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-2">
+            Nuestros Servicios
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            No instalamos software y nos vamos. Diseñamos sistemas a medida que se integran profundamente en tu operativa actual.
+          <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base">
+            Tecnología punta simplificada para escalar tu negocio sin aumentar personal.
           </p>
         </div>
 
-        {/* GRID DE SERVICIOS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* GRID COMPACTO */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, index) => (
-            <Card key={index} className="p-8 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group bg-white">
-              <div className="mb-6 p-4 bg-slate-50 rounded-2xl w-fit group-hover:bg-blue-50 transition-colors">
+            <div 
+              key={index} 
+              className="group p-5 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all duration-300"
+            >
+              <div className="mb-3 bg-white w-12 h-12 rounded-lg flex items-center justify-center shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <h3 className="text-lg font-bold text-slate-800 mb-1">{service.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
                 {service.description}
               </p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {service.tags.map(tag => (
-                  <span key={tag} className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Card>
+            </div>
           ))}
         </div>
-
-        {/* FOOTER DE SECCIÓN */}
-        <div className="mt-16 text-center">
-          <p className="text-slate-500 mb-4">¿No ves exactamente lo que buscas?</p>
-          <a href="/contacto" className="inline-flex items-center font-bold text-blue-600 hover:text-blue-800 transition-colors">
-            Consultar desarrollo a medida <ArrowRight className="ml-2 w-4 h-4" />
-          </a>
-        </div>
-
       </div>
     </section>
   );
